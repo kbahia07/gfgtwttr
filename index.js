@@ -7,24 +7,29 @@ var port = process.env.PORT || 5000;
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(express.static('public'))
+
+// Require function splitMessage
+var splitMessage = require('./splitMessage');
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/views/index.html');
 });
 
-// Require function splitMessage
-var splitMessage = require('./splitMessage');
+app.post('/splitMessage', function(req, res){
+	var input = req.body.input;
 
-var input = "I can't believe Tasdadaskdjasjdkajkdjaskdjkjaksdjkasjdkjakdjkjaskdkasjdkjaskdjkajdkjaksjweeter now supports chunking my messages, so I don't have to do it myself.";
-
-try {
-    var fn_result = splitMessage(input);
-    console.log(fn_result);
-} catch (error) {
-    if (error instanceof TypeError) {
-        console.log("Error: " + error);
-    }
-}
+	try {
+	    var result = splitMessage(input);
+		res.status(200).json({data : result});
+	} catch (error) {
+	    if (error instanceof TypeError) {
+	        res.status(400).send({'error' : 'Invalid word'});
+	    } else {
+	    	res.status(500).send({'error' : 'Something went wrong.'});
+	    }
+	}
+});
 
 app.listen(port, function(){
     console.log('listening on *:' + port);

@@ -1,0 +1,9 @@
+.container {
+    margin-top: 100px;
+}
+
+.has-error {
+    display: none;
+    right: 15px;
+    position: absolute;
+}

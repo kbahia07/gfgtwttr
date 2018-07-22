@@ -1,17 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+
 	<title>GFGTWTTR</title>
 </head>
 <body>
-	<h1>Post something here</h1>
-	<textarea id="asdsad">
-		
-	</textarea>
-	<button id="btnSubmit">Submit</button>
-
-
-	<br/><br/><br/>
-	<p id="pDisplay"></p>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div id="textAreaDiv">
+					<form id="postForm">
+						<div class="form-group">
+							<label for="inputTextarea">
+								<b>GFG Twitter Splitter</b>
+							</label>
+							<strong class="text-danger has-error" style="float-right;"><span id="errorMessage"></span></strong>
+							<textarea class="form-control" rows="5" placeholder="Write anything here..." id="inputTextarea"></textarea>
+						</div>
+						<div class="form-group">
+							<small style="float: left;">Tip: Ctrl/Command + Enter to post</small>
+							<button class="btn btn-primary btn-sm" style="float: right;" type="submit" id="btnSubmit">Post</button>
+						</div>
+					</form>
+				</div>
+				<br/>
+				<hr/>
+				<div id="notesDiv">
+					<p><b>Instructions</b></p>
+					<ol>
+						<li>Messages with less than or equal to 50 characters will be posted as is.</li>
+						<li>Messages with greater than 50 characters will be posted into chunks.</li>
+						<li>Messages that contains a span of non-whitespace characters longer than 50 characters are invalid. </li>
+					</ol>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div id="pDisplay" style="overflow-y: scroll; height:500px; border: 1px solid #ccc; padding: 25px;">
+					<p class="pMessage">****************************************************************</p>
+					<p class="pMessage">You can post more messages here.</p>
+					<p class="pMessage">Hello. This is a just sample post!</p>
+				</div>
+			</div>
+		</div>		
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>
