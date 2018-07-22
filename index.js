@@ -1,21 +1,42 @@
+/******************************************
+*
+* 	Require necessary packages
+*
+******************************************/
 var express = require("express");
 var request = require("request");
 var bodyParser = require("body-parser");
 var path = require("path");
-var port = process.env.PORT || 5000;
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static('public'))
 
-// Require function splitMessage
+// Set port to be used
+var port = process.env.PORT || 5000;
+
+// Require splitter function
 var splitMessage = require('./splitMessage');
 
+/******************************************
+*
+* 	Endpont: /
+*	Method: GET
+*
+******************************************/
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/views/index.html');
 });
 
+/******************************************
+*
+* 	Endpont: /splitMessage
+*	Method: POST
+*	Params: 
+*		input: String
+*
+******************************************/
 app.post('/splitMessage', function(req, res){
 	var input = req.body.input;
 
@@ -31,6 +52,11 @@ app.post('/splitMessage', function(req, res){
 	}
 });
 
+/******************************************
+*
+* 			Start Express Server
+*
+******************************************/
 app.listen(port, function(){
     console.log('listening on *:' + port);
 });

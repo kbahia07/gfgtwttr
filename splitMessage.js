@@ -22,7 +22,7 @@ function splitMessage(input, count_parts = 0) {
         var prefix = k + "/" + count_parts + " ";
         var com = prefix.length + concat_word.length - 1;
 
-        if (com >= 50) {
+        if (com >= char_limit) {
             concat_word = tmp.trim();
 
             var pref_concat = prefix + concat_word;
