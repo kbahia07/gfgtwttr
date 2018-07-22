@@ -7,3 +7,18 @@
     right: 15px;
     position: absolute;
 }
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+#pDisplay {
+    overflow-y: scroll; 
+    height:500px; 
+    border: 1px solid #ccc; 
+    padding: 25px;
+}
